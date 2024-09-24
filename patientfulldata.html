@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+       <!-- FIREBASE -->
+       <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fulldata</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            /* background-image: url('./img/1.avif');
+             */
+            background-color: antiquewhite;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .bg {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        input {
+            padding: 8px 40px;
+        }
+
+        button {
+            padding: 8px 40px;
+        }
+
+        button:hover {
+            background-color: purple;
+            color: #fff;
+        }
+    </style>
+
+
+    <div class="bg">
+        <h1>Patient full data</h1>
+        <input id="name" type="text" placeholder="Enter your Name">
+        <input id="email" type="email" placeholder="Enter your Email">
+        <input id="age" type="age" placeholder="Enter your Age">
+        <input id="bmi" type="text" placeholder="Enter your BMI">
+        <input id="blood" type="text" placeholder="Enter your Blood Group">
+        <input   type="datetime-local" name="" id="date">
+
+        <button onclick="submitthedata()">Submit</button>
+
+    </div>
+
+
+    <script>
+        function submitthedata() {
+            let name = document.getElementById('name').value
+            let email = document.getElementById('email').value
+            let age = document.getElementById('age').value
+            let bmi = document.getElementById('bmi').value
+            let blood = document.getElementById('blood').value
+            let date = document.getElementById('date').value
+
+            if (name == '' || email == '' || age == '' || bmi == '' || blood == '') {
+                alert('please fill the inputs')
+            }
+            
+            else {
+
+                let fulldata = db.collection('pateintdetail').doc()
+
+                let obj = {
+                    name : name,
+                    email : email,
+                    age : age,
+                    bmi : bmi,
+                    blood : blood,
+                    date :  Date()
+                    
+                }
+
+                fulldata.set(obj)
+                window.alert('add sucessfully')
+
+            }
+
+
+        }
+    </script>
+
+
+<script src="./key.js"></script>
+
+
+</body>
+
+</html>

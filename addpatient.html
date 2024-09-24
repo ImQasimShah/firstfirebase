@@ -76,7 +76,7 @@
                     title: "Oops...",
                     text: "Please fill the inputs"
                 });
-            } else {
+            } else {    
 
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then((userCredential) => {
